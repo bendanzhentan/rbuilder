@@ -281,9 +281,10 @@ impl OpRbuilderPayloadServiceBuilder {
 
         Evm: ConfigureEvm<Header = Header>,
     {
-        let payload_builder =
-            op_rbuilder_payload_builder::OpRbuilderPayloadBuilder::new(evm_config)
-                .set_compute_pending_block(self.compute_pending_block);
+        let payload_builder = op_rbuilder_payload_builder::OpRbuilderPayloadBuilder::new(
+            evm_config,
+            self.compute_pending_block,
+        );
         let conf = ctx.payload_builder_config();
 
         let payload_job_config = BasicPayloadJobGeneratorConfig::default()

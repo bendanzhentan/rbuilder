@@ -43,27 +43,11 @@ pub struct OpRbuilderPayloadBuilder<EvmConfig> {
 }
 
 impl<EvmConfig> OpRbuilderPayloadBuilder<EvmConfig> {
-    pub const fn new(evm_config: EvmConfig) -> Self {
+    pub const fn new(evm_config: EvmConfig, compute_pending_block: bool) -> Self {
         Self {
-            compute_pending_block: true,
             evm_config,
+            compute_pending_block,
         }
-    }
-
-    /// Sets the rollup's compute pending block configuration option.
-    pub const fn set_compute_pending_block(mut self, compute_pending_block: bool) -> Self {
-        self.compute_pending_block = compute_pending_block;
-        self
-    }
-
-    /// Enables the rollup's compute pending block configuration option.
-    pub const fn compute_pending_block(self) -> Self {
-        self.set_compute_pending_block(true)
-    }
-
-    /// Returns the rollup's compute pending block configuration option.
-    pub const fn is_compute_pending_block(&self) -> bool {
-        self.compute_pending_block
     }
 }
 
